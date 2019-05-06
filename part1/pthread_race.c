@@ -10,9 +10,14 @@
  * FROM YOUR GRADE
  */
  /** BEGIN VALUES THAT CANNOT BE CHANGED */
-#define MAX_THREADS 36
-#define MAX_ITERATIONS 22
+#define MAX_THREADS 16
+#define MAX_ITERATIONS 40
 /** END VALUES THAT CANNOT BE CHANGED */
+
+
+
+/* COPIED FILE FROM P4 IF ANY DESREPANCIES */
+
 
 
 /**
@@ -20,7 +25,7 @@
  * nanosleep function.
  * For exmaple : nanosleep(&ts, NULL);
  */
-struct timespec ts = {0, 150000};
+struct timespec ts = {0, 123456};
 static int sharedVar = 0;
 pthread_mutex_t mutex;
 
