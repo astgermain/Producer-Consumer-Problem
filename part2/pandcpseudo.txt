@@ -1,1 +1,45 @@
-pseudo goes here
+A lot of things changed during coding but I believe this was a good start
+
+1. Initialize all variables denoted in project instructions
+	-init a counter variable initially set to 0
+	(This counter is incremented by the producer after it produces a new buffer and is decremented by consumer after it consumes a buffer.) 
+	-init an in and out int variable for the bounded buffer queue.
+	-Create producer and consumer array for testing
+
+
+2. Enqueue_item takes in an item
+	*(may need to change to if in order to keep return type int rather than void) 
+	-while counter is equal to buffer size(N) do nothing
+	-then add the item to the buffer array at in and increment counter and increment in following the logic for the producer process in syncronization tools slides and book pg 204
+	-return 0
+
+3.Dequeue_item 
+	while counter is equal to 0 do nothing
+	- create int next_consumed and assign value of buffer[out]
+	-decrement counter
+	-increment out following slides.
+
+4.Producer thread
+	-create temp variable of type int to represent item
+	-while true
+		-sleep for ptime(given argument)
+		-wait(empty)
+		-acquire mutex lock
+		if(enqueue_item) report error
+		else print what producer made
+		add item to producer array for testing
+		-release mutex
+		-signal(full)
+//per page 256 of book with added syncronization calls
+
+5. Consumer Thread
+	- create temp variable of type int to represent item
+	-while true
+		-sleep for ctime(given argument)
+		-wait(full)
+		-acquire mutex lock
+		-if(dequeue_item) print error
+		-else print what consumer consumed
+		-add item to consumer array for testing
+		-release mutex lock
+		-signal(empty)
